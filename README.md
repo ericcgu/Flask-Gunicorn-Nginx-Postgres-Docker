@@ -7,6 +7,7 @@
 * `Docker` 
 * `Python`
 * `Flask` 
+* `Postgres` 
 * `SQLAlchemy`
 * `Google oAuth 2.0`
 * `Marshmallow`
