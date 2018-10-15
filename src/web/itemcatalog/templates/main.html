@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="content-section" align="center">
+            <h3>State</h3>
+            <br>
+            <ul class="list-group">
+                {% for category in categories %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="{{ url_for('category.items_by_category', category_id=category.id) }}">{{ category.name }}</a>
+                    <span class="badge badge-primary badge-pill">{{ category.item_count }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            <br>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="content-section">
+            <h3>
+                <div style="text-align: center">Jobs</div>
+            </h3><br>
+            {% for item in items %}
+            <article class="media content-section">
+                <div class="media-body">
+                    <div class="article-metadata">
+                        <a class="mr-3">
+                            <span style="float: left" href="#"><b>{{item.name}}</b></span>
+                            <span style="float: right"><small>{{ item.category.name }}</small></span>
+                        </a>
+                    </div>
+                    <p class="article-content"><small>{{ item.description }}</small></p>
+
+                    <footer>
+                        <span style="float: left"><small>
+                                <p>
+                                    Posted on
+                                    {{ item.time_updated.strftime('%A %B %d, %Y') }}
+                                    by <b>{{ item.user.name }}</b>.
+                                </p>
+                            </small></span>
+                        {% if item.user == current_user %}
+                        <span style="float: right">
+                            <a href="{{ url_for('item.update_item', item_id=item.id) }}"><button type="button" class="btn btn-primary btn-sm">Update</button></a>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                        </span>
+                        {% endif %}
+                    </footer>
+                </div>
+            </article>
+            <!-- Modal -->
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteModalLabel">Delete {{ item.name }}?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <form action="{{ url_for('item.delete_item', item_id=item.id) }}" method="POST">
+                                <input class="btn btn-danger" type="submit" value="Delete">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

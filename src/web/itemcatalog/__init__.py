@@ -28,11 +28,19 @@ if app.config['TESTING'] is True:
     for _ in range(70):
         category.Category.seed(fake)
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
-   
-    return '/tefff/'
 
+# Blueprints
+from itemcatalog.routes.userauth import userauth # noqa:E401
+from itemcatalog.routes.category import category # noqa:E401
+from itemcatalog.routes.item import item # noqa:E401
+from itemcatalog.routes.main import main # noqa:E401
+from itemcatalog.routes.errorhandlers import errorhandlers # noqa:E401
+
+app.register_blueprint(userauth)
+app.register_blueprint(category)
+app.register_blueprint(item)
+app.register_blueprint(main)
+app.register_blueprint(errorhandlers)
 
 if __name__ == '__main__':
     app.run()
