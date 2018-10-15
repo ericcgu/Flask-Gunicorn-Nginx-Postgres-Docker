@@ -1,0 +1,42 @@
+version: '3.7'
+
+services:
+  postgres:
+    build: ./postgres
+    restart: always
+    volumes:
+      - ./db:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: 'master'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'temporary'
+
+  web:
+    restart: always
+    build: ./web
+    ports:
+      - "8000:8000"
+    expose:
+      - 8000
+    depends_on:
+      - postgres
+    links:
+      - postgres:postgres
+    volumes:
+      - .:/usr/src/app/static
+    env_file: .env
+    command: gunicorn -w 2 -b :8000 app:app
+
+  nginx:
+    build: ./nginx
+    restart: always
+    volumes:
+      - /www/static
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+
+  
