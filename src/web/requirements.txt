@@ -9,6 +9,7 @@ Flask-Login==0.4.1
 flask-marshmallow==0.9.0
 Flask-SQLAlchemy==2.3.2
 Flask-WTF==0.14.2
+gunicorn==19.8.1
 idna==2.7
 itsdangerous==0.24
 Jinja2==2.10
@@ -17,6 +18,8 @@ MarkupSafe==1.0
 marshmallow==2.15.6
 marshmallow-sqlalchemy==0.14.1
 oauthlib==2.1.0
+psycopg2==2.7.5
+psycopg2-binary==2.7.5
 python-dateutil==2.7.3
 python-dotenv==0.9.1
 requests==2.19.1
@@ -29,4 +32,3 @@ urllib3==1.23
 URLObject==2.4.3
 Werkzeug==0.14.1
 WTForms==2.2.1
-gunicorn==19.8.1

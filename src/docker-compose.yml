@@ -11,11 +11,17 @@ services:
     environment:
       POSTGRES_DB: 'master'
       POSTGRES_USER: 'postgres'
-      POSTGRES_PASSWORD: 'temporary'
+      POSTGRES_PASSWORD: 'temp'
 
   web:
     restart: always
     build: ./web
+    environment:
+      ENV: "Development"
+      PYTHONUNBUFFERED: 1
+      PYTHONDONTWRITEBYTECODE: 1
+      OAUTHLIB_INSECURE_TRANSPORT: 1
+      OAUTHLIB_RELAX_TOKEN_SCOPE: 1
     ports:
       - "8000:8000"
     expose:
@@ -27,7 +33,7 @@ services:
     volumes:
       - .:/usr/src/app/static
     env_file: .env
-    command: gunicorn -w 2 -b :8000 app:app
+    command: gunicorn -w 2 -b :8000 itemcatalog:app
 
   nginx:
     build: ./nginx
