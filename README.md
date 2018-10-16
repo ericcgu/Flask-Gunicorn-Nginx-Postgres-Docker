@@ -60,12 +60,11 @@ Organized into Package modules to promote code readability, re-use and collabora
 │   └── settings.py           # Considered YAML, environment classes inherit from Default class.
 ├── docker-compose.yml
 ├── app
-│   ├── egu-nyc-dev-001.db    # Required db objects are seeded with Faker.
 │   ├── forms
 │   │   └── item.py           # Create/Update re-leverage/share unified form.
 │   ├── models
 │   │   ├── category.py       # Hybrid property/expression to dynamically calc child relationships.
-│   │   ├── item.py
+│   │   ├── item.py           # Required db objects are seeded with Faker.
 │   │   └── user.py
 │   ├── routes
 │   │   ├── category.py
