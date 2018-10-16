@@ -42,7 +42,7 @@ This application is organized around a MVC pattern.
 ├── nginx
 ├── postgres
 ├── docker-compose.yml
-└── app
+└── flask/gunicorn 
     ├── models      # Model
     ├── routes      # Controller
     ├── templates   # View
@@ -59,7 +59,7 @@ Organized into Package modules to promote code readability, re-use and collabora
 ├── config                      
 │   └── settings.py           # Considered YAML, environment classes inherit from Default class.
 ├── docker-compose.yml
-├── app
+├── flask/gunicorn
 │   ├── forms
 │   │   └── item.py           # Create/Update re-leverage/share unified form.
 │   ├── models
