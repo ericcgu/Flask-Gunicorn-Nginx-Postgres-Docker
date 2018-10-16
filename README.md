@@ -39,7 +39,9 @@ This application is organized around a MVC pattern.
 
 ```bash
 .
-├── config
+├── nginx
+├── postgres
+├── docker-compose.yml
 └── app
     ├── models      # Model
     ├── routes      # Controller
