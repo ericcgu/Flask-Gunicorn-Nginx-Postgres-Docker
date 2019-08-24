@@ -24,9 +24,9 @@ class Default:
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    GOOGLE_OAUTH_CLIENT_ID = ('718620819024-p79474kp950rtb6kobs8r6622akb6j62'
+    GOOGLE_OAUTH_CLIENT_ID = ('929372413657-c3ebs8ddh3hdtjkir9ngldpn889tlhlf'
                               '.apps.googleusercontent.com')
-    GOOGLE_OAUTH_CLIENT_SECRET = 'E2KqzJFHFRoPTm81Zwe5ifW7'
+    GOOGLE_OAUTH_CLIENT_SECRET = 'JtJOlR1mv9ZjeNNXP_Oh_o70'
     GOOGLE_OAUTH_CLIENT_SCOPE = [
         "https://www.googleapis.com/auth/plus.me",
         "https://www.googleapis.com/auth/userinfo.email",
@@ -40,7 +40,7 @@ class Development(Default):
     TESTING = True
     ENV = os.environ.get("ENV") or ValidEnvironments.Development
     SERVER = os.environ.get("SERVER") or "egu-nyc-dev-001"
-   
+
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 
@@ -60,5 +60,5 @@ class Production(Default):
     TESTING = False
     ENV = os.environ.get("ENV") or ValidEnvironments.Production
     SERVER = os.environ.get("SERVER") or "egu-nyc-prd-001"
-    
+
     SQLALCHEMY_TRACK_MODIFICATIONS = True
